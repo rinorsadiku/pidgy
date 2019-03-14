@@ -4,7 +4,7 @@ const app = express();
 
 // Setting up a route handler
 app.get('/', (req, res) => {
-	res.send({ hi: 'there' });
+	res.send({ bye: 'buddy' });
 });
 
 // Telling express on which port to listen for requests

@@ -1,0 +1,14 @@
+{
+	"short_name": "Pidgy",
+	"name": "Collect feedback with Pidgy",
+	"icons": [
+		{
+			"src": "Logo_pidgy_purple.png",
+			"type": "image/png"
+		}
+	],
+	"start_url": ".",
+	"display": "standalone",
+	"theme_color": "#000000",
+	"background_color": "#ffffff"
+}

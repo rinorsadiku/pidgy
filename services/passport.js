@@ -30,24 +30,24 @@ passport.use(
 			callbackURL: '/auth/google/callback', // specify where passport should handle the user when he comes back to our application
 			proxy: true
 		},
-		(accessToken, refreshToken, profile, done) => {
-			User.findOne({ providerId: profile.id }).then(existingUser => {
-				if (existingUser) {
-					console.log(`Logged in as ${existingUser.name}`);
-					// Telling passport that there were no errors and we found a user
-					done(null, existingUser);
-				} else {
-					new User({
-						providerId: profile.id,
-						name: profile.displayName,
-						email: profile.emails[0].value,
-						profilePicture: profile.photos[0].value,
-						provider: profile.provider
-					})
-						.save()
-						.then(user => done(null, user));
-				}
-			});
+		async (accessToken, refreshToken, profile, done) => {
+			const existingUser = await User.findOne({ providerId: profile.id });
+
+			if (existingUser) {
+				console.log(`Logged in as ${existingUser.name}`);
+				// Telling passport that there were no errors and we found a user
+				return done(null, existingUser);
+			}
+
+			const user = await new User({
+				providerId: profile.id,
+				name: profile.displayName,
+				email: profile.emails[0].value,
+				profilePicture: profile.photos[0].value,
+				provider: profile.provider
+			}).save();
+
+			done(null, user);
 		}
 	)
 );

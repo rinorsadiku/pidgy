@@ -14,12 +14,21 @@ module.exports = app => {
 	// Once passport notices that there is a code in the URL
 	// they do not make another authentication request
 	// instead they try to fetch the 'profile' and the 'email' scoped data
-	app.get('/auth/google/callback', passport.authenticate('google'));
+	// passport.authenticate() is a middleware btw
+	// And this is how we attach middlewares to specific routes
+	app.get(
+		'/auth/google/callback',
+		passport.authenticate('google'),
+		(req, res) => {
+			// Redirecting the user to the main dashboard after they have logged in
+			res.redirect('/surveys');
+		}
+	);
 
 	app.get('/api/logout', (req, res) => {
 		// This logout function is attached automatically to the request object by passport
 		req.logout();
-		res.send(req.user);
+		res.redirect('/');
 	});
 
 	app.get('/api/current_user', (req, res) => {

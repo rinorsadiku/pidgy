@@ -1,10 +1,10 @@
 const keys = require('../config/keys');
 const stripe = require('stripe')(keys.stripeSecretKey);
-const requireLogin = require('../middlewares/requireLogin');
+const { login } = require('../middlewares/middlewares');
 
 module.exports = app => {
 	// Put all the Route handlers over here
-	app.post('/api/stripe/checkout', requireLogin, async (req, res) => {
+	app.post('/api/stripe/checkout', login, async (req, res) => {
 		// Here will be contained the logic that will handle the token
 		// and reach out to the stripe api to complete the transaction
 

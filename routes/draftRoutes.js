@@ -28,10 +28,38 @@ module.exports = app => {
 	});
 
 	app.post('/api/drafts', login, async (req, res) => {
-		// Here we will add a new draft
-		req.body.recipients = JSON.parse(req.body.recipients);
-		req.body.emailInputs = JSON.parse(req.body.emailInputs);
-		const draft = new Draft({ ...req.body, _user: req.user.id });
+		const {
+			title,
+			body,
+			subject,
+			custom,
+			sender,
+			facebook,
+			instagram,
+			twitter,
+			template
+		} = req.body;
+		const recipients = JSON.parse(req.body.recipients);
+		const emailInputs = JSON.parse(req.body.emailInputs);
+
+		// // Here we will add a new draft
+		// req.body.recipients = JSON.parse(req.body.recipients);
+		// req.body.emailInputs = JSON.parse(req.body.emailInputs);
+
+		const draft = new Draft({
+			title,
+			body,
+			subject,
+			custom,
+			sender,
+			facebook,
+			instagram,
+			twitter,
+			template,
+			recipients,
+			emailInputs,
+			_user: req.user.id
+		});
 		await draft.save();
 
 		res.send(draft);

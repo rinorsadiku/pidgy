@@ -1,0 +1,66 @@
+.dashboard__surveys {
+	display: grid;
+	grid-template-columns: 1fr 0.8fr;
+	grid-template-rows: 1fr;
+}
+@media only screen and (max-width: 75em) {
+	.dashboard__surveys {
+		grid-template-columns: 1fr;
+		grid-row-gap: 10rem;
+	}
+}
+
+@media only screen and (max-width: 75em) {
+	.dashboard__metrics {
+		grid-row: 1 / 2;
+	}
+}
+
+.dashboard__metrics--header {
+	margin-bottom: 15.5rem;
+}
+@media only screen and (max-width: 75em) {
+	.dashboard__metrics--header {
+		margin-bottom: 5rem;
+	}
+}
+
+.dashboard__order label {
+	display: block;
+	font-size: 1.5rem;
+	font-weight: 500;
+	text-transform: uppercase;
+	color: #bbbbbb;
+	margin-bottom: 1rem;
+}
+
+.dashboard__order select {
+	width: 25rem;
+	padding: 1rem 1.3rem;
+	outline: none;
+	border-radius: 3px;
+	border: 1px solid #bbbbbb;
+	font-size: 1.4rem;
+	font-weight: 500;
+	font-family: 'Montserrat', sans-serif;
+	color: #222834;
+}
+
+.form-btn {
+	position: fixed;
+	bottom: 4rem;
+	right: 2rem;
+	width: 6rem;
+	height: 6rem;
+	border-radius: 50%;
+	background-color: #2e86de;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+}

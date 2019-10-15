@@ -11,17 +11,46 @@ const Mailer = require('../services/Mailer');
 const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
 
 const Survey = mongoose.model('surveys');
+const Data = mongoose.model('data');
 
 module.exports = app => {
 	app.get('/api/surveys', login, async (req, res) => {
-		const surveys = await Survey.find({ _user: req.user.id }).select({
-			recipients: false
+		try {
+			const surveys = await Survey.find({ _user: req.user.id });
+
+			res.send(surveys);
+		} catch (err) {
+			res.status(422).send({ error: err });
+		}
+	});
+
+	app.get('/api/surveys/:id', async (req, res) => {
+		const survey = await Survey.findOne({
+			_id: req.params.id
 		});
-		res.send(surveys);
+
+		res.send(survey);
+	});
+
+	app.delete('/api/surveys/:surveyId', login, async (req, res) => {
+		try {
+			// Delete the survey and the email Inputs that correspond to it
+			await Survey.findByIdAndDelete({
+				_id: req.params.surveyId
+			});
+
+			await Data.findOneAndDelete({
+				_survey: req.params.surveyId
+			});
+
+			res.send({});
+		} catch (err) {
+			console.log('Error' + err);
+		}
 	});
 
 	app.get('/api/surveys/:surveyId/:choice', (req, res) => {
-		res.send('Thanks for voting');
+		res.redirect('/thanks');
 	});
 
 	app.post('/api/surveys/webhooks', (req, res) => {
@@ -36,7 +65,11 @@ module.exports = app => {
 				const match = p.test(new URL(url).pathname);
 
 				if (match) {
-					return { email, surveyId: match.surveyId, choice: match.choice };
+					return {
+						email,
+						surveyId: match.surveyId,
+						choice: match.choice
+					};
 				}
 			})
 			.compact()
@@ -64,39 +97,66 @@ module.exports = app => {
 	});
 
 	app.post('/api/surveys', login, credits, async (req, res) => {
-		// Here we will put the code for creating surveys and sending emails
+		// Here we will put all the code for creating and sending surveys
 
-		// 1) Require in all the post data
-		const { title, subject, body, recipients } = req.body;
+		// 1) Require in all the code from the client-side form
+		const {
+			title,
+			body,
+			subject,
+			custom,
+			template,
+			facebook,
+			twitter,
+			instagram,
+			sender
+		} = req.body;
 
-		// 2) Create a new instance of a survey
+		const recipients = JSON.parse(req.body.recipients);
+		const emailInputs = JSON.parse(req.body.emailInputs);
+
+		// 2) Create a new instance of survey
 		const survey = new Survey({
 			title,
-			subject,
 			body,
-			recipients: recipients.split(',').map(email => ({ email: email.trim() })), // Adding another set of parentheses just so JS is not confused
-			_user: req.user.id, // Creating the connection to the user
+			subject,
+			recipients: recipients.map(email => ({
+				email
+			})),
+			_user: req.user.id,
+			custom,
+			emailInputs: emailInputs,
 			dateSent: Date.now()
 		});
 
-		// 3) Using the Mailer class to create a "mailer obj" to send the emails
-		const mailer = new Mailer(survey, surveyTemplate(survey));
+		// 3) Here we will create the mailer and also pass the necessary arguments to the surveyTemplate
+		const details = {
+			color: template,
+			facebook,
+			twitter,
+			instagram
+		};
+		const mailer = new Mailer(
+			survey,
+			sender,
+			surveyTemplate(survey, details)
+		);
 
-		// Putting everything in a try/catch block to prevent error crashing
 		try {
 			// 4) Sending the mailer to sendgrid
 			await mailer.send();
 
-			// 5) Save the survey in the database
+			// 5) Saving the survey in the database
 			await survey.save();
 
-			// 6) Deduct one credit from the user credits and save the new user
+			// 6) Deducting one credit to the user credits
 			req.user.credits -= 1;
 			const user = await req.user.save();
 
-			// 7) Send as a response the newly saved user
+			// 7) Send the user
 			res.send(user);
 		} catch (err) {
+			console.log(err);
 			res.status(422).send({ error: err });
 		}
 	});

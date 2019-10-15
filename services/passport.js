@@ -15,7 +15,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-	// After user makes a follow up requrest after it has logged in
+	// After user makes a follow up request after it has logged in
 	// that's when we take the token that we crafted using the id we received
 	// and we extract the id of that token and we find the user in the db according to that token
 	User.findById(id).then(user => done(null, user));

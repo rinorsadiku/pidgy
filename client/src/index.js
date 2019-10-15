@@ -4,7 +4,6 @@
 // Also we will require in the CSS here so that we can load all the styling
 // in other components... it doesn't really matter where you put it,
 // for as long as you can reference it inside the jsx code
-import 'materialize-css/dist/css/materialize.min.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';

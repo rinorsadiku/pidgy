@@ -1,0 +1,64 @@
+.form__plugin-group {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	position: relative;
+}
+.form__plugin-group:not(:last-child) {
+	margin-bottom: 2rem;
+}
+.form__plugin-group::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	width: 35rem;
+	height: 3px;
+}
+@media only screen and (max-width: 31.25em) {
+	.form__plugin-group::after {
+		width: 93.5%;
+	}
+}
+.form__plugin-group--fb::after {
+	background-color: #3c579e;
+}
+.form__plugin-group--tw::after {
+	background-color: #55acee;
+}
+.form__plugin-group--gm::after {
+	background-color: #dd4b39;
+}
+.form__plugin-group--insta::after {
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		right top,
+		from(#833ab4),
+		color-stop(#fd1d1d),
+		to(#fcb045)
+	);
+	background-image: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
+}
+.form__plugin {
+	width: 35rem;
+	padding: 1.5rem 1.8rem;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+	border: none;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 500;
+	font-size: 1.5rem;
+}
+.form__plugin--image {
+	width: 2rem;
+	-webkit-transform: translateX(-3rem);
+	transform: translateX(-3rem);
+}
+@media only screen and (max-width: 31.25em) {
+	.form__plugin {
+		width: 100%;
+	}
+}

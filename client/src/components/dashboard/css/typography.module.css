@@ -1,0 +1,262 @@
+.heading-1 {
+	font-weight: 300;
+	line-height: 1;
+	font-size: 2.4rem;
+	text-transform: uppercase;
+	color: #f7f8f9;
+}
+@media only screen and (max-width: 25em) {
+	.heading-1 {
+		font-size: 2rem;
+	}
+}
+
+.heading-2 {
+	font-weight: 500;
+	text-transform: uppercase;
+}
+
+.heading-3 {
+	text-transform: uppercase;
+	font-size: 1.5rem;
+	color: #bbbbbb;
+	font-weight: 500;
+	position: relative;
+}
+.heading-3--line {
+	font-family: 'Montserrat', sans-serif;
+}
+.heading-3--bottom {
+	display: grid;
+	grid-template-columns: -webkit-max-content 1fr;
+	grid-template-columns: max-content 1fr;
+}
+.heading-3--bottom::after {
+	content: '';
+	position: absolute;
+	bottom: -5px;
+	height: 1px;
+	background-color: currentColor;
+	width: 100%;
+}
+.heading-3--line::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	height: 1px;
+	background-color: currentColor;
+	width: 75%;
+	margin-left: 2rem;
+}
+@media only screen and (max-width: 31.25em) {
+	.heading-3--line::after {
+		width: 100%;
+		top: 140%;
+		left: 0;
+		margin-left: 0;
+	}
+}
+.heading-3--display {
+	font-size: 1.7rem;
+	font-family: 'Raleway', sans-serif;
+}
+
+.paragraph {
+	font-family: 'Raleway', sans-serif;
+	font-size: 1.5rem;
+	max-height: 10rem;
+	padding-right: 1rem;
+}
+.paragraph--scroll {
+	overflow-y: scroll;
+}
+.paragraph--scroll::-webkit-scrollbar {
+	background-color: transparent;
+	width: 4px;
+	border-radius: 10rem;
+}
+.paragraph--scroll::-webkit-scrollbar-thumb {
+	background-color: #bbbbbb;
+	border-radius: 100px;
+}
+
+.heading-4 {
+	font-family: 'Raleway', sans-serif;
+	font-size: 1.5rem;
+	font-weight: 500;
+}
+
+.heading-group {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
+.heading-svg {
+	margin-right: 1rem;
+}
+
+.btn,
+.btn:link,
+.btn:visited {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 1.3rem;
+	width: 11rem;
+	height: 4rem;
+	background-color: #2e86de;
+	color: #f7f8f9;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+	-webkit-transition: all 0.3s;
+	transition: all 0.3s;
+}
+.btn:hover,
+.btn:link:hover,
+.btn:visited:hover {
+	-webkit-filter: brightness(0.85);
+	filter: brightness(0.85);
+}
+.btn span,
+.btn:link span,
+.btn:visited span {
+	font-size: 2rem;
+	margin-right: 1rem;
+}
+
+.btn--header {
+	font-size: 1.4rem;
+	width: 16rem;
+	height: 5.5rem;
+}
+
+.btn--small {
+	font-size: 1.2rem;
+	width: 4rem;
+	height: 3rem;
+}
+
+.btn--danger {
+	background-color: #fe656c;
+}
+
+.btn--warning {
+	background-color: #ff9900;
+}
+
+.btn--grey {
+	background-color: #ccc !important;
+	color: #333333 !important;
+}
+
+.btn--link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	font-weight: 400;
+}
+
+.btn--logout {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 1.4rem;
+	font-weight: 500;
+	text-decoration: none;
+	border: none;
+	border-radius: 3px;
+	padding: 1.5rem 3rem;
+	-webkit-transition: all 0.3s;
+	transition: all 0.3s;
+}
+.btn--logout:hover {
+	-webkit-filter: brightness(0.85);
+	filter: brightness(0.85);
+}
+
+.btn--hallow {
+	background-color: transparent;
+	border: 2px solid #2e86de;
+	color: #2e86de;
+}
+
+.btn--group {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+}
+
+@media only screen and (max-width: 25em) {
+	.btn--downward {
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: column;
+		flex-direction: column;
+	}
+	.btn--downward > * {
+		margin-bottom: 1rem;
+	}
+}
+
+.btn--action {
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+}
+
+.mb-sm {
+	margin-bottom: 2rem;
+}
+
+.mb-md {
+	margin-bottom: 4rem;
+}
+
+.mb-lg {
+	margin-bottom: 6rem;
+}
+
+.mb-xlg {
+	margin-bottom: 15.5rem;
+}
+
+@media only screen and (max-width: 75em) {
+	.mb-xlg {
+		margin-bottom: 5rem;
+	}
+}
+
+.message {
+	text-align: center;
+
+	margin-top: 10rem;
+
+	display: grid;
+	grid-template-columns: max-content;
+	justify-content: center;
+	justify-items: center;
+
+	grid-row-gap: 2rem;
+}
+
+.message__title {
+	font-size: 9rem;
+	color: #2e86de;
+	line-height: 1;
+}
+
+.message__text {
+	font-family: 'Raleway', sans-serif;
+	font-size: 1.4rem;
+}
+
+@media only screen and (max-width: 31.25em) {
+	.message__title {
+		font-size: 6rem;
+	}
+}

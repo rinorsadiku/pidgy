@@ -1,0 +1,131 @@
+.roadtrip {
+  grid-column: full-start / full-end;
+  position: relative; }
+  .roadtrip__steps {
+    display: grid;
+    grid-template-columns: repeat(8, minmax(-webkit-min-content, 1fr));
+    grid-template-columns: repeat(8, minmax(min-content, 1fr));
+    grid-template-rows: repeat(8, -webkit-min-content);
+    grid-template-rows: repeat(8, min-content); }
+    @media only screen and (max-width: 50em) {
+      .roadtrip__steps {
+        grid-row-gap: 3rem; } }
+  .roadtrip__step--1, .roadtrip__step--2, .roadtrip__step--3 {
+    justify-self: start;
+    grid-column: 1 / 6;
+    display: grid;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    grid-template-columns: minmax(35rem, -webkit-min-content) -webkit-min-content;
+    grid-template-columns: minmax(35rem, min-content) min-content; }
+    @media only screen and (max-width: 50em) {
+      .roadtrip__step--1, .roadtrip__step--2, .roadtrip__step--3 {
+        grid-column: 1 / -1;
+        justify-self: center; } }
+    @media only screen and (max-width: 31.25em) {
+      .roadtrip__step--1, .roadtrip__step--2, .roadtrip__step--3 {
+        grid-template-columns: repeat(2, 1fr); } }
+    @media only screen and (max-width: 25em) {
+      .roadtrip__step--1, .roadtrip__step--2, .roadtrip__step--3 {
+        grid-template-columns: 1fr;
+        grid-row-gap: 2rem;
+        justify-items: center; } }
+  .roadtrip__step--1 {
+    grid-row: 1 / 2; }
+  .roadtrip__step--2 {
+    justify-self: end;
+    grid-column: 4 / -1;
+    grid-row: 3 / 4;
+    grid-template-columns: -webkit-min-content minmax(35rem, -webkit-min-content);
+    grid-template-columns: min-content minmax(35rem, min-content); }
+    @media only screen and (max-width: 50em) {
+      .roadtrip__step--2 {
+        justify-self: center;
+        grid-column: 1 / -1; } }
+    @media only screen and (max-width: 25em) {
+      .roadtrip__step--2 {
+        grid-template-columns: 1fr;
+        grid-row-gap: 2rem;
+        justify-items: center; } }
+  .roadtrip__step--3 {
+    grid-row: 6 / 7; }
+  .roadtrip__graphic--1 {
+    width: 40rem; }
+    @media only screen and (max-width: 37.5em) {
+      .roadtrip__graphic--1 {
+        width: 30rem; } }
+    @media only screen and (max-width: 31.25em) {
+      .roadtrip__graphic--1 {
+        width: 25rem; } }
+  .roadtrip__graphic--2 {
+    width: 50rem; }
+    @media only screen and (max-width: 37.5em) {
+      .roadtrip__graphic--2 {
+        width: 35rem; } }
+    @media only screen and (max-width: 31.25em) {
+      .roadtrip__graphic--2 {
+        width: 27.5rem; } }
+    @media only screen and (max-width: 25em) {
+      .roadtrip__graphic--2 {
+        grid-row: 2 / 3; } }
+  .roadtrip__graphic--3 {
+    width: 40rem; }
+    @media only screen and (max-width: 37.5em) {
+      .roadtrip__graphic--3 {
+        width: 30rem; } }
+    @media only screen and (max-width: 31.25em) {
+      .roadtrip__graphic--3 {
+        width: 25rem; } }
+  .roadtrip__stairs--right {
+    width: 70rem;
+    height: 40rem;
+    grid-column: 2 /-1;
+    grid-row: 2 / 3;
+    justify-self: start;
+    background-image: url(../assets/stairs-right.png);
+    background-size: 100%;
+    background-repeat: no-repeat; }
+    @media only screen and (max-width: 50em) {
+      .roadtrip__stairs--right {
+        grid-column: 3 / 7;
+        background-image: url(../assets/stairs-straight.png);
+        width: 34rem;
+        justify-self: center; } }
+    @media only screen and (max-width: 37.5em) {
+      .roadtrip__stairs--right {
+        width: 28rem;
+        -ms-flex-item-align: center;
+            align-self: center; } }
+    @media only screen and (max-width: 25em) {
+      .roadtrip__stairs--right {
+        height: 33rem; } }
+  .roadtrip__stairs--left {
+    width: 63rem;
+    height: 47rem;
+    grid-column: 4 /-1;
+    grid-row: 5 / 6;
+    justify-self: start;
+    background-image: url(../assets/stairs-left.png);
+    background-size: 100%;
+    background-repeat: no-repeat; }
+    @media only screen and (max-width: 62.5em) {
+      .roadtrip__stairs--left {
+        grid-column: 3 / -1; } }
+    @media only screen and (max-width: 50em) {
+      .roadtrip__stairs--left {
+        grid-column: 3 / 7;
+        background-image: url(../assets/stairs-straight.png);
+        width: 34rem;
+        justify-self: center; } }
+    @media only screen and (max-width: 37.5em) {
+      .roadtrip__stairs--left {
+        width: 28rem;
+        -ms-flex-item-align: center;
+            align-self: center; } }
+    @media only screen and (max-width: 25em) {
+      .roadtrip__stairs--left {
+        height: 33rem; } }
+  .roadtrip__image {
+    width: 100%;
+    display: block; }

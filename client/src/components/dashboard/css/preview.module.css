@@ -1,0 +1,62 @@
+.preview__main {
+	width: 40%;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 500;
+	font-size: 1.5rem;
+}
+
+.preview__disclaimer {
+	composes: mb-md from './typography.module.css';
+}
+
+.preview__disclaimer span {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 600;
+	margin-right: 1rem;
+	color: #222834;
+}
+
+.preview__entry-group {
+	margin-bottom: 3rem;
+}
+
+.preview__name {
+	display: block;
+	font-size: 1.4rem;
+	font-weight: 400;
+	font-family: 'Montserrat', sans-serif;
+	text-transform: capitalize;
+	color: #89909b;
+}
+
+.preview__value {
+	color: #222834;
+	font-size: 1.6rem;
+}
+
+.preview__recipients {
+	margin-top: 1rem;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+	grid-gap: 2rem;
+}
+
+.preview__recipient {
+	list-style: none;
+	width: 25rem;
+	padding: 0.5rem 1.5rem;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+
+	background-color: #fff;
+	-webkit-box-shadow: 0px 3px 10px rgba(34, 40, 52, 0.2);
+	box-shadow: 0px 3px 10px rgba(34, 40, 52, 0.2);
+	border-radius: 1rem;
+}

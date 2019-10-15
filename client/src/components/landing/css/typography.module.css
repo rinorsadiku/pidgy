@@ -1,0 +1,250 @@
+.heading-1 {
+	font-size: 4rem;
+	font-family: 'Nunito', sans-serif;
+	font-weight: 400;
+	line-height: 1;
+}
+.heading-1--white {
+	color: #fff;
+}
+@media only screen and (max-width: 50em) {
+	.heading-1 {
+		font-size: 3.4rem;
+	}
+}
+@media only screen and (max-width: 37.5em) {
+	.heading-1 {
+		font-size: 3rem;
+	}
+}
+
+.heading-2 {
+	font-size: 1.8rem;
+	font-weight: 400;
+	line-height: 1;
+}
+.heading-2--white {
+	color: rgba(255, 255, 255, 0.8);
+}
+@media only screen and (max-width: 50em) {
+	.heading-2 {
+		font-size: 1.7rem;
+	}
+}
+@media only screen and (max-width: 37.5em) {
+	.heading-2 {
+		font-size: 1.5rem;
+	}
+}
+
+.heading-3 {
+	font-size: 3.8rem;
+	font-weight: 500;
+	display: inline-block;
+	color: #4367eb;
+	position: relative;
+}
+@media only screen and (max-width: 31.25em) {
+	.heading-3 {
+		font-size: 3rem;
+	}
+}
+.heading-3--cloud-top::before {
+	content: '';
+	position: absolute;
+	top: -8rem;
+	left: -9rem;
+	width: 25rem;
+	height: 13rem;
+	background: #f0f4ff;
+	border-radius: 10rem;
+	z-index: -1;
+	-webkit-transition: all 0.4s ease-out;
+	transition: all 0.4s ease-out;
+}
+@media only screen and (max-width: 31.25em) {
+	.heading-3--cloud-top::before {
+		width: 20rem;
+		height: 10rem;
+		top: -7rem;
+	}
+}
+@media only screen and (max-width: 25em) {
+	.heading-3--cloud-top::before {
+		width: 15rem;
+		height: 8rem;
+		top: -5rem;
+		left: -6rem;
+	}
+}
+.heading-3--cloud-top:hover::before {
+	left: 17rem;
+}
+@media only screen and (max-width: 25em) {
+	.heading-3--cloud-top:hover::before {
+		left: 14rem;
+	}
+}
+.heading-3--cloud-bottom::before {
+	content: '';
+	position: absolute;
+	bottom: -8rem;
+	right: -9rem;
+	width: 25rem;
+	height: 13rem;
+	background: #f0f4ff;
+	border-radius: 10rem;
+	z-index: -1;
+	-webkit-transition: all 0.4s ease-out;
+	transition: all 0.4s ease-out;
+}
+@media only screen and (max-width: 31.25em) {
+	.heading-3--cloud-bottom::before {
+		width: 20rem;
+		height: 10rem;
+		bottom: -7rem;
+	}
+}
+@media only screen and (max-width: 25em) {
+	.heading-3--cloud-bottom::before {
+		width: 15rem;
+		height: 8rem;
+		bottom: -5rem;
+		right: -6rem;
+	}
+}
+.heading-3--cloud-bottom:hover::before {
+	right: 17rem;
+}
+@media only screen and (max-width: 25em) {
+	.heading-3--cloud-bottom:hover::before {
+		right: 14rem;
+	}
+}
+
+.heading-5 {
+	font-size: 1.9rem;
+	font-family: 'Nunito', sans-serif;
+	color: #090a0c;
+}
+
+.paragraph {
+	font-size: 1.6rem;
+}
+
+.btn,
+.btn:link,
+.btn:visited {
+	font-family: 'Raleway', sans-serif;
+	font-size: 1.6rem;
+	color: #fff;
+	text-decoration: none;
+	display: inline-block;
+	padding: 1.7rem 3.4rem;
+	background: #291d89;
+	-webkit-box-shadow: 0 3px 6px rgba(41, 29, 137, 0.4);
+	box-shadow: 0 3px 6px rgba(41, 29, 137, 0.4);
+	border: none;
+	border-radius: 10rem;
+	outline: none;
+	cursor: pointer;
+	-webkit-transition: all 0.2s;
+	transition: all 0.2s;
+}
+@media only screen and (max-width: 37.5em) {
+	.btn,
+	.btn:link,
+	.btn:visited {
+		font-size: 1.4rem;
+		padding: 1.3rem 2.7rem;
+	}
+}
+@media only screen and (max-width: 25em) {
+	.btn,
+	.btn:link,
+	.btn:visited {
+		font-size: 1.3rem;
+		padding: 1.2rem 2.5rem;
+	}
+}
+
+.btn:hover {
+	-webkit-transform: translateY(-3px);
+	transform: translateY(-3px);
+	-webkit-box-shadow: 0 6px 7px rgba(41, 29, 137, 0.2);
+	box-shadow: 0 6px 7px rgba(41, 29, 137, 0.2);
+}
+
+.btn--heavy {
+	-webkit-box-shadow: 0 3px 6px rgba(41, 29, 137, 0.8);
+	box-shadow: 0 3px 6px rgba(41, 29, 137, 0.8);
+}
+@media only screen and (max-width: 37.5em) {
+	.btn--heavy {
+		-webkit-box-shadow: 0 4px 5px #291d89;
+		box-shadow: 0 4px 5px #291d89;
+	}
+}
+.btn--heavy:hover {
+	-webkit-transform: translateY(-3px);
+	transform: translateY(-3px);
+	-webkit-box-shadow: 0 6px 7px rgba(41, 29, 137, 0.7);
+	box-shadow: 0 6px 7px rgba(41, 29, 137, 0.7);
+}
+
+.btn span svg {
+	width: 1.7rem;
+	margin-left: 0.7rem;
+}
+
+.u-center-text {
+	text-align: center !important;
+}
+
+.mb-sm {
+	margin-bottom: 1.5rem;
+}
+
+.mb-md {
+	margin-bottom: 3rem;
+}
+
+.mb-lg {
+	margin-bottom: 5rem;
+}
+
+.mb-xlg {
+	margin-bottom: 15rem;
+}
+
+.card {
+	display: grid;
+	grid-template-columns: 1fr;
+	justify-items: center;
+	text-align: center;
+}
+.card__image {
+	width: 55%;
+}
+.card__label {
+	font-size: 17rem;
+	font-weight: bold;
+	color: #d9d9d9;
+	line-height: 1;
+}
+@media only screen and (max-width: 31.25em) {
+	.card__label {
+		font-size: 14rem;
+	}
+}
+.card__text--wide {
+	width: 80%;
+}
+.card__text--narrow {
+	width: 50%;
+}
+@media only screen and (max-width: 25em) {
+	.card__text--narrow {
+		width: 100%;
+	}
+}

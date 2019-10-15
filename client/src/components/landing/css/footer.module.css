@@ -1,0 +1,23 @@
+.footer {
+	grid-column: center-start / center-end;
+	padding: 0 0 4rem;
+	display: grid;
+	justify-items: center;
+}
+.footer__line {
+	height: 30rem;
+	width: 1px;
+	background: #ccc;
+}
+.credits {
+	width: 100%;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+}

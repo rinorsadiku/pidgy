@@ -1,0 +1,63 @@
+.form__customize-list {
+	list-style: none;
+	font-size: 1.4rem;
+	font-weight: 400;
+	font-family: 'Montserrat', sans-serif;
+	color: #222834;
+	margin-left: 3rem;
+}
+@media only screen and (max-width: 31.25em) {
+	.form__customize-list {
+		margin-left: 0;
+	}
+}
+.form__customize-item {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+.form__customize-item span {
+	border-bottom: 1px solid #bbbbbb;
+}
+.form__customize-item:not(:last-child) {
+	margin-bottom: 1rem;
+}
+.form__customize-item span:not(:last-child) {
+	margin-right: 2rem;
+}
+.form__customize-item button {
+	margin-left: auto;
+	margin-right: 15rem;
+}
+@media only screen and (max-width: 31.25em) {
+	.form__customize-input select {
+		width: 20%;
+	}
+}
+@media only screen and (max-width: 31.25em) {
+	.form__customize-input input {
+		width: 50%;
+	}
+}
+.form__customize-input > *:not(:last-child) {
+	margin-right: 2rem;
+}
+@media only screen and (max-width: 31.25em) {
+	.form__customize-input > *:not(:last-child) {
+		margin-right: 0.4rem;
+	}
+}
+.form__note {
+	font-family: 'Raleway', sans-serif;
+	font-weight: 500;
+	font-size: 1.5rem;
+	color: #222834;
+}
+.form__note span {
+	font-weight: 600;
+	margin-right: 0.5rem;
+	color: #222834;
+}

@@ -4,9 +4,12 @@ const cookieSession = require('cookie-session'); // This library gives us access
 const passport = require('passport'); // We're going to use this to tell passport what to use to keep track of the authentication state
 const bodyParser = require('body-parser');
 const keys = require('./config/keys');
+const compression = require('compression');
 
-require('./models/User');
+require('./models/Data');
+require('./models/Draft');
 require('./models/Survey');
+require('./models/User');
 
 // Include all the passport config here at the top
 require('./services/passport');
@@ -36,9 +39,12 @@ app.use(bodyParser.json());
 // This is where we tell passport to use cookies for our authentication
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(compression());
 
 require('./routes/authRoutes')(app); // Include all of the authentication routes
 require('./routes/billingRoutes')(app); // Include all of the billing routes
+require('./routes/dataRoutes')(app); // Include all of the billing routes
+require('./routes/draftRoutes')(app); // Include all of the billing routes
 require('./routes/surveyRoutes')(app); // Include all of the survey handling routes
 
 // Here we will add the configuration to tell our server how to act when in production

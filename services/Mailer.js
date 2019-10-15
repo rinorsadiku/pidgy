@@ -6,7 +6,7 @@ const keys = require('../config/keys');
 
 // helper.Mail has a lot of methods that we are going to use to send email
 class Mailer extends helper.Mail {
-	constructor({ subject, recipients }, content) {
+	constructor({ subject, recipients, custom }, sender, content) {
 		// Note: everytime helper.[something] is used,
 		// we're in a way formatting some data using the sendgrid helpers
 		// in order to make them 'accessible' to sendgrid
@@ -16,15 +16,16 @@ class Mailer extends helper.Mail {
 
 		this.sgAPI = sendgrid(keys.sendGridKey); // communicating to the SendGrid API
 
-		this.from_email = new helper.Email('no-reply@pidgy.com');
-		this.subject = subject;
+		this.custom = custom;
+		this.from_email = new helper.Email(sender);
 		this.body = new helper.Content('text/html', content);
+		this.subject = subject;
 		this.recipients = this.formatAddresses(recipients); // Helper function to format all recipient emails
 
 		// addContent() is a helper function from helper.Mail
-		this.addContent(this.body); // Adding the this.body to the mailer, in a way registering it to the mailer
 		this.addClickTracking(); // Enabling click-tracking inside our emails
 		this.addRecipients(); // Adding the recipients to the mailer
+		this.addContent(this.body); // Adding the this.body to the mailer, in a way registering it to the mailer
 	}
 
 	formatAddresses(recipients) {
@@ -41,16 +42,21 @@ class Mailer extends helper.Mail {
 	}
 
 	addRecipients() {
-		// Defining a sort of container that will hold all of our recipients in the mailer
-		const personalize = new helper.Personalization();
-
-		// Adding each recipient to that container
+		// Creating a container for each recipient
 		this.recipients.forEach(recipient => {
-			personalize.addTo(recipient);
-		});
+			// Defining a sort of container that will hold all of our recipients in the mailer
+			let personalize = new helper.Personalization();
 
-		// Finalizing the container to work with the mailer
-		this.addPersonalization(personalize);
+			if (this.custom) {
+				personalize.addSubstitution(
+					new helper.Substitution('-email-', recipient.email)
+				);
+			}
+			personalize.addTo(recipient);
+
+			// Finalizing the container to work with the mailer
+			this.addPersonalization(personalize);
+		});
 	}
 
 	// The function that will send the mailer to sendgrid, that will indeed email all of our recipients

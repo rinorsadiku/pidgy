@@ -1,0 +1,121 @@
+.drafts__main {
+	width: 60%;
+}
+@media only screen and (max-width: 75em) {
+	.drafts__main {
+		width: 100%;
+	}
+}
+
+.drafts__list {
+	margin: 5rem 0;
+}
+
+.drafts__item {
+	min-height: 20rem;
+	padding: 3.5rem;
+	display: grid;
+	grid-template-columns: 1fr -webkit-max-content;
+	grid-template-columns: 1fr max-content;
+	grid-column-gap: 1rem;
+
+	background-color: #fff;
+	-webkit-box-shadow: 0px 3px 10px rgba(34, 40, 52, 0.2);
+	box-shadow: 0px 3px 10px rgba(34, 40, 52, 0.2);
+	border-radius: 1rem;
+}
+.drafts__item:not(:last-child) {
+	margin-bottom: 3rem;
+}
+
+.drafts__content {
+	border-right: 1px solid #bbbbbb;
+	display: grid;
+	grid-template-rows:
+		minmax(4rem, -webkit-min-content) minmax(-webkit-min-content, 10rem)
+		1fr;
+	grid-template-rows: minmax(4rem, min-content) minmax(min-content, 10rem) 1fr;
+}
+@media only screen and (max-width: 50em) {
+	.drafts__content {
+		border-right: none;
+	}
+}
+@media only screen and (max-width: 37.5em) {
+	.drafts__content {
+		border-right: 1px solid #bbbbbb;
+		grid-row-gap: 1rem;
+	}
+}
+@media only screen and (max-width: 31.25em) {
+	.drafts__content {
+		grid-row-gap: 0rem;
+		border-right: none;
+		grid-template-rows:
+			minmax(4rem, -webkit-min-content) minmax(-webkit-min-content, 11rem)
+			1fr;
+		grid-template-rows: minmax(4rem, min-content) minmax(min-content, 11rem) 1fr;
+	}
+}
+
+.drafts__recipients {
+	list-style: none;
+	font-size: 1.3rem;
+	font-family: 'Raleway', sans-serif;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	padding-left: 1rem;
+
+	overflow-y: scroll;
+	max-height: 18rem;
+}
+
+.drafts__recipients::-webkit-scrollbar {
+	background-color: transparent;
+	width: 4px;
+	border-radius: 10rem;
+}
+.drafts__recipients::-webkit-scrollbar-thumb {
+	background-color: #bbbbbb;
+	border-radius: 100px;
+}
+@media only screen and (max-width: 50em) {
+	.drafts__recipients {
+		display: none;
+	}
+}
+@media only screen and (max-width: 37.5em) {
+	.drafts__recipients {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+	}
+}
+@media only screen and (max-width: 31.25em) {
+	.drafts__recipients {
+		display: none;
+	}
+}
+
+.drafts__recipient {
+	border-bottom: 0.5px solid #bbbbbb;
+}
+.drafts__recipient:not(:last-child) {
+	margin-bottom: 1rem;
+}
+
+.drafts__btn-group {
+	display: flex;
+}
+
+.drafts__btn {
+	margin-right: 1rem;
+}

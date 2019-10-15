@@ -80,9 +80,10 @@ module.exports = app => {
 		try {
 			req.body.recipients = JSON.parse(req.body.recipients);
 			req.body.emailInputs = JSON.parse(req.body.emailInputs);
-			const draft = await Draft.findByIdAndUpdate(req.params.draftId, {
-				...req.body
-			});
+			const draft = await Draft.findByIdAndUpdate(
+				req.params.draftId,
+				req.body
+			);
 			res.send({ draft });
 		} catch (err) {
 			console.log('Error' + err);

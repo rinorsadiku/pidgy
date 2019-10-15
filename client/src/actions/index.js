@@ -3,6 +3,7 @@ import {
 	FETCH_USER,
 	FETCH_SURVEYS,
 	FETCH_DATA,
+	SUBMIT_DATA,
 	DELETE_SURVEY,
 	FETCH_DRAFTS,
 	FETCH_DRAFT,
@@ -52,10 +53,11 @@ export const deleteSurvey = id => async dispatch => {
 };
 
 export const submitData = (values, history) => async dispatch => {
-	await axios.post('/api/data', values);
+	const res = await axios.post('/api/data', values);
 
 	history.push('/thanks');
-	dispatch({ type: FETCH_DATA, payload: {} });
+	console.log(res.data);
+	dispatch({ type: SUBMIT_DATA, payload: res.data });
 };
 
 export const fetchData = surveyId => async dispatch => {

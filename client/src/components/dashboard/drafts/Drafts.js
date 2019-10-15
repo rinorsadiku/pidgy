@@ -15,7 +15,7 @@ import typo from '../css/typography.module.css';
 class Drafts extends React.Component {
 	componentDidMount = async () => {
 		await this.props.fetchDrafts();
-	}
+	};
 
 	render() {
 		return (

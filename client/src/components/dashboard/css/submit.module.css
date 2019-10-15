@@ -40,6 +40,13 @@
 	text-align: center;
 }
 
+@media only screen and (max-width: 25em) {
+	.submit__box {
+		padding: 3rem;
+		height: 20rem;
+	}
+}
+
 .submit__confirm span {
 	font-weight: 500;
 	border-bottom: 1px solid #222834;

@@ -47,7 +47,7 @@ module.exports = app => {
 				.then(survey => {
 					if (survey) data.save();
 				})
-				.then(() => res.status(200).send({}));
+				.then(() => res.status(200).send(data));
 		} catch (err) {
 			console.log(err);
 		}

@@ -6,7 +6,7 @@ import DraftsItem from './DraftsItem';
 
 const DraftsList = props => {
 	const renderDrafts = map(props.drafts, draft => {
-		if (draft === {}) return;
+		if (!draft) return '';
 		return <DraftsItem key={draft._id} draft={draft}></DraftsItem>;
 	});
 

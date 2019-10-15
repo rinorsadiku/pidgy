@@ -41,6 +41,11 @@ textarea:focus {
 	grid-template-columns: 1fr;
 	grid-template-rows: 25vh minmax(75vh, 1fr);
 }
+@media only screen and (max-width: 25em) {
+	.app-container {
+		grid-template-rows: 30vh minmax(70vh, 1fr);
+	}
+}
 
 .default {
 	background-color: #f7f8f9;

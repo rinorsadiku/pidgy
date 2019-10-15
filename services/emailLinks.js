@@ -20,7 +20,7 @@ module.exports = ({ id, custom }, color) => {
 
 	return `
         <a
-            href="${keys.redirectDomain}/surveys/${id}/-email-"
+            href="${keys.redirectDomain}surveys/${id}/-email-"
             style="background-color: ${color};display: inline-block;color: #fff;padding: 8px 22px;border-radius: 5px;text-decoration: none;font-size: 17px;"
         >
             Complete Survey

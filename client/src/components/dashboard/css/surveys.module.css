@@ -49,7 +49,6 @@
 .surveys__btn {
 	-ms-flex-item-align: end;
 	align-self: end;
-	justify-self: start;
 
 	composes: form__actions from './form.module.css';
 }

@@ -32,12 +32,22 @@
 	margin-left: auto;
 	margin-right: 15rem;
 }
+@media only screen and (max-width: 75em) {
+	.form__customize-item button {
+		margin-left: 20rem;
+		margin-right: 0;
+	}
+}
+@media only screen and (max-width: 25em) {
+	.form__customize-item button {
+		margin-left: 15rem;
+	}
+}
 @media only screen and (max-width: 31.25em) {
 	.form__customize-input select {
 		width: 20%;
 	}
-}
-@media only screen and (max-width: 31.25em) {
+
 	.form__customize-input input {
 		width: 50%;
 	}

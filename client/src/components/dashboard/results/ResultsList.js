@@ -24,9 +24,11 @@ class ResultsList extends React.Component {
 	}
 
 	renderItems() {
-		if (this.props.data === []) return <p>There are no results</p>;
+		const { data } = this.props;
+		if (!Array.isArray(data) || !data.length)
+			return <p>There are no results to show</p>;
 
-		return this.props.data.map(({ email, responses }, index) => {
+		return data.map(({ email, responses }, index) => {
 			return (
 				<div key={`${email}-${index}`} className={r['results__item']}>
 					<h4 className={r['results__email']}>{email}</h4>

@@ -6,8 +6,14 @@
 	color: #222834;
 	margin-left: 3rem;
 }
+@media only screen and (max-width: 75em) {
+	.form__customize-list {
+		width: 40rem;
+	}
+}
 @media only screen and (max-width: 31.25em) {
 	.form__customize-list {
+		width: 100%;
 		margin-left: 0;
 	}
 }
@@ -30,17 +36,11 @@
 }
 .form__customize-item button {
 	margin-left: auto;
-	margin-right: 15rem;
+	margin-right: 5rem;
 }
 @media only screen and (max-width: 75em) {
 	.form__customize-item button {
-		margin-left: 20rem;
 		margin-right: 0;
-	}
-}
-@media only screen and (max-width: 25em) {
-	.form__customize-item button {
-		margin-left: 15rem;
 	}
 }
 @media only screen and (max-width: 31.25em) {

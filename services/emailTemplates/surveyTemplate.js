@@ -9,7 +9,7 @@ module.exports = (survey, details) => {
 	const { id, custom } = survey;
 	const { color, facebook, instagram, twitter } = details;
 	return `
-		<div  style="background: #fcfafa;padding: 10px;margin: 0;">
+		<div style="background: #fcfafa;padding: 10px;margin: 0;">
 			<div style="margin: 0 auto;background: #222834;padding: 30px 10px;max-width: 500px;">
 				<a 
 					target="_blank"

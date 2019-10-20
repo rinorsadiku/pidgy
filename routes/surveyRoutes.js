@@ -6,7 +6,7 @@ const Path = require('path-parser').default;
 const { URL } = require('url');
 
 const mongoose = require('mongoose');
-const { login, credits } = require('../middlewares/middlewares');
+const { login, credits, cleanCache } = require('../middlewares/middlewares');
 const Mailer = require('../services/Mailer');
 const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
 
@@ -16,7 +16,9 @@ const Data = mongoose.model('data');
 module.exports = app => {
 	app.get('/api/surveys', login, async (req, res) => {
 		try {
-			const surveys = await Survey.find({ _user: req.user.id });
+			const surveys = await Survey.find({ _user: req.user.id }).cache({
+				key: req.user.id
+			});
 
 			res.send(surveys);
 		} catch (err) {
@@ -32,22 +34,27 @@ module.exports = app => {
 		res.send(survey);
 	});
 
-	app.delete('/api/surveys/:surveyId', login, async (req, res) => {
-		try {
-			// Delete the survey and the email Inputs that correspond to it
-			await Survey.findByIdAndDelete({
-				_id: req.params.surveyId
-			});
+	app.delete(
+		'/api/surveys/:surveyId',
+		login,
+		cleanCache,
+		async (req, res) => {
+			try {
+				// Delete the survey and the email Inputs that correspond to it
+				await Survey.findByIdAndDelete({
+					_id: req.params.surveyId
+				});
 
-			await Data.findOneAndDelete({
-				_survey: req.params.surveyId
-			});
+				await Data.findOneAndDelete({
+					_survey: req.params.surveyId
+				});
 
-			res.send({});
-		} catch (err) {
-			console.log('Error' + err);
+				res.send({});
+			} catch (err) {
+				console.log('Error' + err);
+			}
 		}
-	});
+	);
 
 	app.get('/api/surveys/:surveyId/:choice', (req, res) => {
 		res.redirect('/thanks');
@@ -96,7 +103,7 @@ module.exports = app => {
 		res.send({});
 	});
 
-	app.post('/api/surveys', login, credits, async (req, res) => {
+	app.post('/api/surveys', login, credits, cleanCache, async (req, res) => {
 		// Here we will put all the code for creating and sending surveys
 
 		// 1) Require in all the code from the client-side form

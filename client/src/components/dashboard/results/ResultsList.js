@@ -22,8 +22,9 @@ class ResultsList extends React.Component {
 			);
 		});
 	}
+
 	renderItems() {
-		if (this.props.data.length === 0) return <p>There are no results</p>;
+		if (this.props.data === []) return <p>There are no results</p>;
 
 		return this.props.data.map(({ email, responses }, index) => {
 			return (

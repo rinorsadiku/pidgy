@@ -1,3 +1,5 @@
+const { clearHash } = require('../services/cache');
+
 module.exports = {
 	login(req, res, next) {
 		if (!req.user) {
@@ -13,5 +15,10 @@ module.exports = {
 		}
 
 		next();
+	},
+
+	async cleanCache(req, res, next) {
+		await next();
+		clearHash(req.user.id);
 	}
 };

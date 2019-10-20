@@ -1,4 +1,4 @@
-const { login } = require('../middlewares/middlewares');
+const { login, cleanCache } = require('../middlewares/middlewares');
 const mongoose = require('mongoose');
 const Draft = mongoose.model('drafts');
 
@@ -7,7 +7,7 @@ module.exports = app => {
 		try {
 			const drafts = await Draft.find({
 				_user: req.user.id
-			});
+			}).cache({ key: req.user.id });
 
 			res.send(drafts);
 		} catch (err) {
@@ -19,7 +19,7 @@ module.exports = app => {
 		try {
 			const draft = await Draft.findOne({
 				_id: req.params.id
-			});
+			}).cache({ key: req.user.id });
 
 			res.send(draft);
 		} catch (err) {
@@ -27,7 +27,7 @@ module.exports = app => {
 		}
 	});
 
-	app.post('/api/drafts', login, async (req, res) => {
+	app.post('/api/drafts', login, cleanCache, async (req, res) => {
 		const {
 			title,
 			body,
@@ -41,10 +41,6 @@ module.exports = app => {
 		} = req.body;
 		const recipients = JSON.parse(req.body.recipients);
 		const emailInputs = JSON.parse(req.body.emailInputs);
-
-		// // Here we will add a new draft
-		// req.body.recipients = JSON.parse(req.body.recipients);
-		// req.body.emailInputs = JSON.parse(req.body.emailInputs);
 
 		const draft = new Draft({
 			title,
@@ -65,7 +61,7 @@ module.exports = app => {
 		res.send(draft);
 	});
 
-	app.delete('/api/drafts/:draftId', login, async (req, res) => {
+	app.delete('/api/drafts/:draftId', login, cleanCache, async (req, res) => {
 		try {
 			// Delete the survey and the email Inputs that correspond to it
 			await Draft.findByIdAndDelete(req.params.draftId);
@@ -76,7 +72,7 @@ module.exports = app => {
 		}
 	});
 
-	app.put('/api/drafts/:draftId', login, async (req, res) => {
+	app.put('/api/drafts/:draftId', login, cleanCache, async (req, res) => {
 		try {
 			req.body.recipients = JSON.parse(req.body.recipients);
 			req.body.emailInputs = JSON.parse(req.body.emailInputs);

@@ -36,7 +36,7 @@ class Form extends React.Component {
 		if (this.params.draft === 'true') {
 			await this.props.fetchDraft(this.params.id);
 
-			if (!this.props.draft) this.props.history.push('/404');
+			if (this.props.draft === {}) this.props.history.push('/404');
 
 			const { custom, emailInputs, recipients } = this.props.draft;
 			this.context.setData({
@@ -231,6 +231,8 @@ const mapStateToProps = ({ drafts }) => {
 const routedComponent = reduxForm({
 	form: 'surveyForm',
 	destroyOnUnmount: false,
+	enableReinitialize: true,
+	keepDirtyOnReinitialize: true,
 	validate
 })(withRouter(Form));
 

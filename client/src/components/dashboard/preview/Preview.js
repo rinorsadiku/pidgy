@@ -5,12 +5,13 @@ import queryString from 'query-string';
 import requireAuth from '../requireAuth';
 
 import PreviewDisclaimer from './PreviewDisclaimer';
+import Template from './Template';
 
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { submitSurvey, deleteDraft } from './../../../actions/index';
 
-import { HeadingGroup } from './../Typography';
+import { HeadingGroup, HeadingThird } from './../Typography';
 import { SvgPreview, SvgXSmall } from './../Svg';
 import { formEntryFields } from './../form/formFields';
 
@@ -87,9 +88,13 @@ class Preview extends React.Component {
 				</HeadingGroup>
 
 				<div className={p['preview__main']}>
-					<PreviewDisclaimer />
-
 					<div className={p['preview__entries']}>
+						<HeadingThird
+							type="heading-3--line"
+							margin="mb-md"
+							content="Email Entries"
+						/>
+						<PreviewDisclaimer />
 						{this.renderEntries()}
 
 						<div className={p['preview__entry-group']}>
@@ -120,6 +125,15 @@ class Preview extends React.Component {
 								Send
 							</button>
 						</div>
+					</div>
+
+					<div className={p['preview__template']}>
+						<HeadingThird
+							type="heading-3--line"
+							margin="mb-md"
+							content="Email Review"
+						/>
+						<Template survey={this.props.formValues} />
 					</div>
 				</div>
 			</>

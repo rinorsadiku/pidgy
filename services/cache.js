@@ -34,6 +34,7 @@ mongoose.Query.prototype.exec = async function() {
 	// If we do, return that
 	if (cacheValue) {
 		const doc = JSON.parse(cacheValue);
+		console.log('RESULTS SERVED FROM CACHE');
 		// Hydrating the data so that we return a mongoose model and not a plain object
 		// It's the same as new Blog({title: 'Lorem'})
 		// Below we check the type of data, if its an array of values like we fetch all blogs,
@@ -50,7 +51,7 @@ mongoose.Query.prototype.exec = async function() {
 	// Setting the mongoose documents into valid JSON data for redis
 	// Also setting the expiration date
 	client.hset(this.hashKey, key, JSON.stringify(result));
-
+	console.log('RESULTS SERVED FROM MONGODB');
 	return result;
 };
 

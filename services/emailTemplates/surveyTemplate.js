@@ -18,7 +18,7 @@ module.exports = (survey, details) => {
 					style="display: block;margin: 0 auto;width: 50px;margin-bottom: 20px;"
 				>
 					<img
-						src="https://i.ibb.co/Dk9c3Vp/logo.png"
+						src="http://d1mpb2v3w5kcj6.cloudfront.net/pidgy-logo.png"
 						alt="Pidgy"
 						style="display: inline-block;width: 100%;"
 					/>
@@ -63,7 +63,7 @@ module.exports = (survey, details) => {
 						rel="noopener noreferrer"
 						style="margin-right: 15px;display: inline-block;width: 25px;"
 						><img
-							src="https://i.ibb.co/QrFzPNm/facebook-icon.png"
+							src="http://d1mpb2v3w5kcj6.cloudfront.net/facebook-icon.png"
 							alt="Facebook"
 							style="width: 100%;"
 					/></a>
@@ -74,14 +74,14 @@ module.exports = (survey, details) => {
 						rel="noopener noreferrer"						
 						style="margin-right: 15px;display: inline-block;width: 25px;"
 						><img
-							src="https://i.ibb.co/Pxcdvqv/twitter-icon.png"
+							src="http://d1mpb2v3w5kcj6.cloudfront.net/twitter-icon.png"
 							alt="Twitter"
 							style="width: 100%;"
 					/></a>
 
 					<a href="${instagram}" target="_blank" rel="noopener noreferrer" style="display: inline-block;width: 25px;"
 						><img
-							src="https://i.ibb.co/wSyxSqk/instagram-icon.png"
+							src="http://d1mpb2v3w5kcj6.cloudfront.net/instagram-icon.png"
 							alt="Instagram"
 							style="width: 100%;"
 					/></a>

@@ -1,9 +1,7 @@
 import React from 'react';
-
 import DataContext from '../contexts/DataContext';
 
 import { Field } from 'redux-form';
-
 import f from '../css/form-checkbox.module.css';
 
 class FormCheckbox extends React.Component {

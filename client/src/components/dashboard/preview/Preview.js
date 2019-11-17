@@ -65,8 +65,8 @@ class Preview extends React.Component {
 
 		const values = { ...this.props.formValues, recipients, emailInputs };
 
-		// Check and see if there is a draft on the query string, if there is
-		// Send a request to delete it
+		// Check and see if there is a draft on the query string,
+		// if there is send a request to delete it
 		const params = queryString.parse(this.props.location.search);
 		if (params.draft === 'true') {
 			await this.props.deleteDraft(params.id);
@@ -109,9 +109,7 @@ class Preview extends React.Component {
 						<div className={typo['btn--group']}>
 							<button
 								type="button"
-								className={`${typo['btn']} ${
-									typo['btn--hallow']
-								}`}
+								className={`${typo['btn']} ${typo['btn--hallow']}`}
 								onClick={this.props.onCancel}
 							>
 								Back
@@ -147,7 +145,6 @@ const mapStateToProps = state => {
 	};
 };
 
-export default connect(
-	mapStateToProps,
-	{ submitSurvey, deleteDraft }
-)(withRouter(requireAuth(Preview)));
+export default connect(mapStateToProps, { submitSurvey, deleteDraft })(
+	withRouter(requireAuth(Preview))
+);

@@ -48,7 +48,6 @@ mongoose.Query.prototype.exec = async function() {
 	const result = await exec.apply(this, arguments);
 
 	// Setting the mongoose documents into valid JSON data for redis
-	// Also setting the expiration date
 	client.hset(this.hashKey, key, JSON.stringify(result));
 	return result;
 };

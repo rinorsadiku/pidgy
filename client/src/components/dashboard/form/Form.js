@@ -186,17 +186,12 @@ class Form extends React.Component {
 }
 
 const validate = values => {
-	// The function takes a single argument called values which are the actual values that the user submits the form
-
-	// 1) If this object returns nothing, reduxForm will think that there were no errors
-	// 2) If it returns a property name the same as the name of a field, reduxForm form will think that that field is invalid and won't submit the form
 	const errors = {};
 
 	if (!values['sender']) {
 		errors['sender'] = 'You must provide a sender email';
 	}
 
-	// -- Add validation to see if the user has supplied a value for each of the fields
 	each(formEntryFields, ({ name, errorMessage }) => {
 		if (!values[name]) {
 			errors[name] = errorMessage;

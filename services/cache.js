@@ -39,6 +39,7 @@ mongoose.Query.prototype.exec = async function() {
 		// Below we check the type of data, if its an array of values like we fetch all blogs,
 		// we need to iterate through all of them and hydrate each one
 		// Otherwise we're just going to hydrate one object i/e fetching a user
+		console.log('SERVED FROM CACHE');
 		return Array.isArray(doc)
 			? doc.map(d => new this.model(d))
 			: new this.model(doc);
@@ -50,6 +51,7 @@ mongoose.Query.prototype.exec = async function() {
 	// Setting the mongoose documents into valid JSON data for redis
 	// Also setting the expiration date
 	client.hset(this.hashKey, key, JSON.stringify(result));
+	console.log('SERVED FROM MONGODB');
 	return result;
 };
 

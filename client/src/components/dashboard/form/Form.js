@@ -110,7 +110,7 @@ class Form extends React.Component {
 							type="heading-3--line"
 							margin="mb-md"
 							content="Email Template"
-						></HeadingThird>
+						/>
 
 						<FormTemplates />
 					</FormGroup>
@@ -148,19 +148,14 @@ class Form extends React.Component {
 						/>
 
 						<FormEntries />
-
 						<FormRecipientInput />
 
 						<div
-							className={`${typo['btn--group']} ${
-								typo['btn--downward']
-							}`}
+							className={`${typo['btn--group']} ${typo['btn--downward']}`}
 						>
 							<button
 								type="button"
-								className={`${typo['btn']} ${
-									typo['btn--hallow']
-								}`}
+								className={`${typo['btn']} ${typo['btn--hallow']}`}
 								onClick={this.onUserLeaveAttempt}
 							>
 								Cancel
@@ -169,9 +164,7 @@ class Form extends React.Component {
 							<div className={form__actions}>
 								<button
 									type="button"
-									className={`${typo['btn']} ${
-										typo['btn--warning']
-									}`}
+									className={`${typo['btn']} ${typo['btn--warning']}`}
 									onClick={this.props.handleSubmit(
 										this.onDraftClick
 									)}
@@ -236,7 +229,8 @@ const routedComponent = reduxForm({
 	validate
 })(withRouter(Form));
 
-export default connect(
-	mapStateToProps,
-	{ submitDraft, fetchDraft, updateDraft }
-)(requireAuth(routedComponent));
+export default connect(mapStateToProps, {
+	submitDraft,
+	fetchDraft,
+	updateDraft
+})(requireAuth(routedComponent));

@@ -56,7 +56,6 @@ export const submitData = (values, history) => async dispatch => {
 	const res = await axios.post('/api/data', values);
 
 	history.push('/thanks');
-	console.log(res.data);
 	dispatch({ type: SUBMIT_DATA, payload: res.data });
 };
 
